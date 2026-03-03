@@ -61,5 +61,22 @@ namespace Godot.DependencyInjection
 If a service with the basetype of Node is registered, either by using `services.AddSingleton<MyNode>():` or `services.AddHostedService<MyNode>();`
 then this Node will be added to the `SceneTree` as a child of the `DependencyInjection` Node.
 
+### 03.03.26 Parameter Injection added.
+```
+...
+    public void SendMessage(int a, [Inject]MessageBusNode mb)
+    {
+        mb.Publish(this,$"Hello, World!, from Method {a}");
+    }
+    
+    public override void _Ready()
+    {
+        // Call the generated version, without Parameters that have the InjectAttribute.
+        SendMessage(5);
+    }
+...
+```
+
+
 ## Licence
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/Skerga/Godot.DependencyInjection/blob/main/LICENSE) file for more information.
