@@ -38,7 +38,7 @@ public class MainClassGenerator : IIncrementalGenerator
                                                  {
                                                      await Task.Yield();
                                                  }
-                                                 DependencyInjection.GetRootNode().AddChild(_dependencyInjection, true);
+                                                 DependencyInjection.GetRootNode().CallDeferred(Window.MethodName.AddChild, _dependencyInjection, true);
                                              }
                                          }
                                          
